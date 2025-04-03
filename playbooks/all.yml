@@ -1,0 +1,17 @@
+#
+# Running the playbooks in sequence
+# Open a browser and go to the URL http://iac.erau.cloud
+# to see the wordgame app running
+#
+
+- name: Running the playbook updating the system
+  ansible.builtin.import_playbook: update.yml
+
+- name: Running the playbook installing docker etc
+  ansible.builtin.import_playbook: setup_docker.yml
+
+- name: Running the playbook installing watchtower
+  ansible.builtin.import_playbook: setup_watchtower.yml
+
+- name: Running the playbook installing wordgame
+  ansible.builtin.import_playbook: setup_wordgame.yml

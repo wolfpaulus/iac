@@ -1,0 +1,14 @@
+# setup_docker.yml file to install docker
+- hosts: all
+  become: true
+  vars:
+    packages:
+      - nano
+      - wget
+      - htop
+      - docker.io
+  tasks:
+    - name: Ensure packages are installed
+      apt:
+        name: "{{ packages }}"
+        state: present
