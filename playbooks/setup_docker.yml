@@ -1,4 +1,7 @@
 # setup_docker.yml file to install docker
+# and other packages on the system
+# Description: This playbook installs Docker and other packages on the system.
+
 - hosts: all
   become: true
   vars:

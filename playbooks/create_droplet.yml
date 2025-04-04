@@ -1,0 +1,24 @@
+# Ansible playbook to create a Digital Ocean droplet and assign an IP address
+# using the Digital Ocean API
+# This playbook is intended to be run on the Ansible host (localhost)
+# It uses the Digital Ocean API to create a droplet and assign an IP address
+# to it
+# The playbook assumes that the Digital Ocean API token is stored in the
+# environment variable DO_API_TOKEN
+# The playbook uses the ansible.builtin.command module to run the Python scripts
+# create_droplet.py and assign_ip.py
+# The playbook uses the ansible.builtin.pause module to pause for 2 minutes
+# to let the droplet build before assigning the IP address
+
+- name: Run a command on the Ansible host
+  hosts: localhost
+  tasks:
+    - name: Create Droplet
+      command: python ../src/create_droplet.py
+
+    - name: Pause for 2 minutes to let DO build the droplet 
+      ansible.builtin.pause:
+        minutes: 2
+    
+    - name: Create Droplet
+      command: python ../src/assign_ip.py

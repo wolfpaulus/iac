@@ -1,4 +1,19 @@
 # Description: Install Watchtower to automatically update Docker containers
+# This playbook installs Watchtower to automatically update Docker containers.
+# Watchtower is a tool that automatically updates running Docker containers
+# whenever a new image is available. It monitors the running containers and
+# checks for updates at a specified interval. If an update is available,
+# it pulls the new image and restarts the container with the new image.
+# This playbook installs Watchtower on all hosts in the inventory.
+# It uses the community.docker.docker_container module to create and manage
+# the Watchtower container. The Watchtower container is configured to monitor
+# all containers with the label com.centurylinklabs.watchtower.enable set to true.
+# The Watchtower container is also configured to remove old images after
+# updating, and to monitor stopped containers as well.
+# The Watchtower container is configured to check for updates every 10 minutes
+# (600 seconds). The polling interval can be changed by modifying the
+# WATCHTOWER_POLL_INTERVAL environment variable in the playbook.
+
 - name: Install Watchtower
   hosts: all
   become: true

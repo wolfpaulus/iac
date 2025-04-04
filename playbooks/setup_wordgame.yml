@@ -13,4 +13,6 @@
         restart_policy: unless-stopped
         published_ports:
           - "80:8000" # host port : container port
+        env:
+          apikey: "{{ API_KEY }}"
 
