@@ -16,9 +16,9 @@
     - name: Create Droplet
       command: python ../src/create_droplet.py
 
-    - name: Pause for 2 minutes to let DO build the droplet 
+    - name: Pause for a minute to let DO build the droplet 
       ansible.builtin.pause:
-        minutes: 2
+        minutes: 1
     
     - name: Create Droplet
       command: python ../src/assign_ip.py

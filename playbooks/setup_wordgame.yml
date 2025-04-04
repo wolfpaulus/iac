@@ -14,5 +14,5 @@
         published_ports:
           - "80:8000" # host port : container port
         env:
-          apikey: "{{ API_KEY }}"
+          apikey: "{{ lookup('env', 'API_KEY') }}"
 
